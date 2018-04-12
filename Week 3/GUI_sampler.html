@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>Quantum Leap International Project</h3>
+    <div id="map"></div>
+  
+	<p>Lattitude: 
+	<input id="lat" type="number"  value = '42.920250'  required>
+	Longitude: 
+	<input id="lng" type="number"  value = '-73.239190' required>
+	</p>
+
+	<p>
+	Marker title:
+	<input id="title" value = "Ursula's Office">
+	</p>
+	<p>
+	Content summary:
+	<input id = "contentBlurb" value = "Oliver can be found here" size=40>
+	</p>
+
+	<p>
+	Learn more here:
+	</p>
+	<p>
+	Link title:
+	<input id = 'essayTitle' value = "Where you can find everything" size = 30>
+	Link address:
+	<input id = 'essay' value = "http://www.google.com" size = 40>
+	</p>
+
+	<p>
+	Go elsewhere title:
+	<input id = 'goElseWhereTitle' value = "My friends' site: " size = 30>
+	Go elsewhere address:
+	<input id = 'goElseWhereLink' value = "http://www.cnn.com" size = 40>
+	</p>
+
+	<button onclick="processInfo()">OK</button></p>
+
+
+	<script>
+
+    // Function 1: Get the latitude and longitude from HTML input and call initMap to initialize map using google map API
+    function processInfo() {
+      lat = Number(document.getElementById("lat").value);
+    	lng = Number(document.getElementById("lng").value);
+
+      // Lattitude Range (from -85 to 85)
+      if (lat < -85) {
+        lat = -85;
+      }
+      else if (lat > 85) {
+        lat = 85;
+      }
+
+      // Longitude Range (from -180 to 180)
+      if (lng < -180) { 
+        lng = -180;
+      }
+      else if (lng > 180) { 
+        lng = 180;
+      }
+
+      // Create Map object using initMap function
+    	var map = initMap(lat, lng);
+      return map
+	  } 
+
+		// Function 2: Initialize the map using inputs in HTML form
+  	function initMap(lat, lng) {
+    	this.lat = lat;
+     	this.lng = lng;
+     	this.title = document.getElementById("title").value;
+     	this.contentBlurb = document.getElementById('contentBlurb').value;
+     	this.essayLink = document.getElementById('essay').value;
+     	this.essayTitle = document.getElementById('essayTitle').value;
+     	this.goElseWhereLink = document.getElementById('goElseWhereLink').value;
+     	this.goElseWhereTitle = document.getElementById('goElseWhereTitle').value;
+    
+    	// create a new map with the center being the lat and lng input by users
+		  // using google map api
+    	this.place = {lat: lat,  lng: lng};
+    	this.map = new google.maps.Map(document.getElementById('map'), { zoom: 8, center: place });
+    
+    	// create a marker at certain position in the map
+    	this.marker = new google.maps.Marker({
+      				position: place,
+      				map: map,
+      				title: title
+    	});
+    
+    	this.contentString = BuildInfoContent(contentBlurb,essayLink,essayTitle,goElseWhereLink,goElseWhereTitle);
+
+    	// the content of marker when clicking on it
+     	this.infowindow = new google.maps.InfoWindow({content: contentString});
+
+    	marker.addListener('click', function() {
+    		infowindow.open(map, marker)
+    	});
+		}
+
+		// Function 3: Set the content (HTML) of the marker information (that will pop-up when clicking on the marker)
+		function BuildInfoContent(blurb, url, urlText, aurl, aurlText) {
+
+    	this.heading = document.createElement("h3");
+    	this.heading.appendChild(document.createTextNode(blurb));
+
+      // First link
+      // Create new HTML element and node containing the text (first hyperlink)
+    	this.txt = document.createTextNode('More information: ');
+    	this.anchor = document.createElement("A");
+    	this.anchor.href = url;
+    	this.node = document.createTextNode(urlText);
+    	this.anchor.appendChild(this.node);
+
+		  // Second link:
+		  // Create new HTML element and node containing the text (second hyperlink)
+    	this.txt2 = document.createTextNode('A related link: ');
+    	this.anchor2 = document.createElement("A");
+    	this.anchor2.href = aurl;
+    	this.node2 = document.createTextNode(aurlText);
+    	this.anchor2.appendChild(this.node2);
+
+    	this.element = document.createElement("div");
+    	this.element.appendChild(this.heading);
+    	this.element.appendChild(this.txt);
+    	this.element.appendChild(this.anchor);
+    	this.element.appendChild(document.createElement("p"));
+    	this.element.appendChild(this.txt2);
+    	this.element.appendChild(this.anchor2);
+    	return element;
+		}
+      
+    </script>
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZJDPhNK1t28nbhw-1YU_oqU65n1jtN1Y&callback=initMap">
+    </script>
+  </body>
+</html>

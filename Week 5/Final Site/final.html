@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+  	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<title>Dung Le | LITERATURE MIXING MACHINE</title>
+
+	<!-- Google Fonts -->
+	<link href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
+
+	<!-- Font-Awesome -->
+    <script src="https://use.fontawesome.com/f8055cc891.js"></script>
+
+	<link href="final-style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="content-wrap">
+		<div class="about">
+			<h2>LITERATURE MIXING MACHINE</h2>
+			<p>Literature Mixing Machine is a web-based project built on the idea of mixing sentences from different classic literature excerpts to create a new excerpt that inherites styles and tones from original ones. As an user, you are allowed to select the author or insert the excerpts of your choice. The machine will break these excerpts into individual sentences before randomly select and reorder these sentences into new excerpt.</p>
+
+			<div class="temporary-note">
+				<h3>NOTES</h3>
+			</div>
+
+			<div class="note">
+				<ul>
+					<li>The number of excerpts (including both author choices and excerpts of your own) must not exceed three.</li>
+					<li>The last sentence of inserted excerpt must end with a dot (.)</li>
+					<li>Inserted excerpts are not available for poem output.</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="machine">
+			<form action="">
+				<div class="authors">
+					<h2>SELECT AUTHORS</h2>
+					<img id="CDimage" src="background/CD.png" alt="Charles Dickens">
+					<div class="names" id="au1">
+						<input type="checkbox" name="authors" value="CDickens"> Charles Dickens
+					</div>
+					<img id="GOimage" src="background/GO.png" alt="George Orwell">
+					<div class="names" id="au2">
+						<input type="checkbox" name="authors" value="GOrwell"> George Orwell
+					</div>
+					<img id="EHimage" src="background/EH.png" alt="Ernest Hemingway">
+					<div class="names" id="au3">
+						<input type="checkbox" name="authors" value="EHemingway"> Ernest Hemingway
+					</div>
+
+					<img id="MTimage" src="background/MT.png" alt="Mark Twain">
+					<div class="names" id="au4">
+						<input type="checkbox" name="authors" value="MTwain"> Mark Twain
+					</div>
+					<img id="JAimage" src="background/JA.png" alt="Jane Austen">
+					<div class="names" id="au5"> 
+						<input type="checkbox" name="authors" value="JAusten"> Jane Austen
+					</div>
+					<img id="EBimage" src="background/EB.png" alt="Emily Bronte">
+					<div class="names" id="au6"> 
+						<input type="checkbox" name="authors" value="EBronte"> Emily Bronte
+					</div>
+
+					<img id="AHimage" src="background/AH.png" alt="Aldous Huxley">
+					<div class="names" id="au7">
+						<input type="checkbox" name="authors" value="AHuxley"> Aldous Huxley
+					</div>
+					<img id="MAimage" src="background/MA.png" alt="Mitch Albom">
+					<div class="names" id="au8">
+						<input type="checkbox" name="authors" value="MAlbom"> Mitch Albom 
+					</div>
+					<img id="AVWimage" src="background/AVW.png" alt="Virginia Woolf">
+					<div class="names" id="au9">
+						<input type="checkbox" name="authors" value="AVWoolf"> Virginia Woolf
+					</div>
+
+					<img id="LHimage" src="background/LH.png" alt="Lu Hsun">
+					<div class="names" id="au10">
+						<input type="checkbox" name="authors" value="LHsun"> Lu Hsun 
+					</div>
+					<img id="WCimage" src="background/WC.png" alt="Willa Cather">
+					<div class="names" id="au11">
+						<input type="checkbox" name="authors" value="WCather"> Willa Cather 
+					</div>
+					<img id="EGimage" src="background/EG.png" alt="Elizabeth Gaskell">
+					<div class="names" id="au12">
+						<input type="checkbox" name="authors" value="EGaskell"> Elizabeth Gaskell 
+					</div>
+				</div>
+
+				<p style="position: relative; top: -250px; left: 440px; font-size: 40px; width: 200px;">AND/OR</p>
+
+				<div class="user-input">
+					<h2>INSERT YOUR OWN EXCERPTS</h2>
+					<div class="input" id="choice1">
+						<textarea id="choice1text" placeholder="Insert your excerpt here... (Optional)"></textarea>
+					</div>
+					<div class="input" id="choice2">
+						<textarea id="choice2text" placeholder="(Optional)"></textarea>
+					</div>
+					<div class="input" id="choice3">
+						<textarea id="choice3text" placeholder="(Optional)"></textarea>
+					</div>
+				</div>
+
+				<div class="features">
+					<h2>SELECT OUTPUT GENRE</h2>
+					<div class="display" id="prose">
+						<input type="radio" name="display" value="prose"> Prose
+					</div>
+					<div class="display" id="poem">
+						<input type="radio" name="display" value="poem"> Poem
+					</div>
+					<div class="display" id="dialogue">
+						<input type="radio" name="display" value="dialogue"> Dialogue
+					</div>
+				</div>
+
+				<div id="generateButton">
+					<button type="button">MIX YOUR LIT</button>
+				</div>
+			</form>
+
+			<div class="result">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras quis viverra velit, viverra sodales lorem. Nunc eget sapien tempor, suscipit massa volutpat, viverra quam. Fusce laoreet condimentum urna, nec rutrum nulla. Curabitur in urna fringilla, faucibus metus sed, iaculis sem. Mauris a felis non mi placerat rhoncus. Pellentesque consectetur venenatis turpis eu auctor. Proin sollicitudin magna ac dapibus sodales. Donec sodales cursus ante vel venenatis. Donec ut neque pharetra, volutpat ipsum id, lacinia lacus. Cras congue urna sed pulvinar placerat. Suspendisse commodo lorem iaculis ipsum rhoncus, molestie dignissim magna auctor.</p>
+			</div>
+
+			<div class="buttons">
+				<div id="mix-again">
+					<button type="button" value="Reload Page">RELOAD THE PAGE</button>
+				</div>
+
+				<div id="show-original-works">
+					<button type="button">SHOW ORIGINAL WORKS</button>
+				</div>
+
+				<div id="share">
+					<button type="button">SHARE YOUR MIX</button>
+				</div>
+
+				<div class="mix-again-note" style="margin-top: 10px; margin-bottom: 10px;">
+					<p><strong>NOTE: </strong>Reload the page, and choose other authors...</p>
+				</div>
+
+				<div class="three-articles">
+					<div id="article1">
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi viverra, lectus id suscipit semper, lorem lectus fringilla augue, id euismod risus lacus vel sapien. Sed volutpat sed diam at pharetra. Integer id libero vel augue luctus egestas. Nunc vulputate quis orci sodales fringilla. Nunc aliquet luctus ipsum ac gravida. Etiam sollicitudin nulla quis ipsum rutrum, ut aliquam sem faucibus. Phasellus placerat tortor nisi, eget feugiat massa luctus in. Mauris tincidunt purus sit amet elit tincidunt, non egestas mi consequat. Sed odio justo, maximus nec diam sed, imperdiet tincidunt sem. Aliquam blandit quam quis imperdiet tristique. Cras nisl nunc, blandit in bibendum a, scelerisque et leo.</p>
+					</div>
+
+					<div id="article2">
+						<p>Sed maximus mauris ac consequat ultrices. Proin vulputate mollis ex sit amet mattis. Suspendisse scelerisque iaculis dui, nec finibus enim rutrum sit amet. Etiam pretium erat ex. Donec et magna tristique velit hendrerit posuere dignissim vitae diam. Donec consequat nulla congue ullamcorper feugiat. Sed ac diam interdum, ultrices dui non, ullamcorper dui. Duis eget rutrum felis. Vestibulum facilisis volutpat feugiat. Vivamus iaculis sollicitudin purus ac egestas.</p>
+					</div>
+
+					<div id="article3">
+						<p>Etiam nisl dolor, consectetur et urna in, feugiat molestie erat. Ut vestibulum nibh sit amet dolor tempus mollis. Integer fermentum justo id vulputate accumsan. Nulla mollis, metus non bibendum interdum, odio velit lobortis lacus, quis iaculis turpis eros vitae velit. Phasellus egestas suscipit mattis. Quisque a maximus turpis. Sed quis laoreet diam. Quisque tristique neque eget urna posuere, pharetra dictum felis finibus. Sed id suscipit tortor.</p>
+					</div>
+				</div>
+
+				<div id="three-share-buttons">
+					<!-- TWITTER SHARE BUTTON -->
+					<a href="https://twitter.com/share?url=https%3A%2F%2Fstudent2.bennington.edu%2F~dungle&via=LeTienDung1310&hashtags=literature%2Cinternetarts&text=Literature%20Mixing%20Machine" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=420,width=550,top=170,left=400');return false;">
+						<div class="twitter-share-button">
+							<i class="fa fa-twitter" aria-hidden="true"></i> 
+							<p style="color: #fff; display: inline; font: normal 14px/18px Helvetica, Arial, sans-serif; position: relative; top: -1px; left: 2px;"><strong>Tweet</strong></p>
+						</div>
+					</a>
+
+					<!-- FACEBOOK SHARE BUTTON -->
+					<a href="http://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstudent2.bennington.edu%2F~dungle&title=Literature%20Mixing%20Machine" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=420,width=550,top=170,left=400');return false;">
+						<div class="facebook-share-button">
+							<i class="fa fa-facebook-official" aria-hidden="true"></i>
+							<p style="color: #fff; display: inline; font: normal 14px/18px Helvetica, Arial, sans-serif; position: relative; top: -1px; left: 4px;"><strong>Share</strong></p>
+						</div>
+					</a>
+
+					<!-- GOOGLE PLUS SHARE BUTTON -->
+					<a href="https://plus.google.com/share?url=https%3A%2F%2Fstudent2.bennington.edu%2F~dungle" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=420,width=550,top=170,left=400');return false;">
+						<div class="google-share-button">
+							<i class="fa fa-google-plus-official" aria-hidden="true"></i>
+							<p style="color: #fff; display: inline; font: normal 14px/18px Helvetica, Arial, sans-serif; position: relative; top: -1px; left: 4px;"><strong>Share</strong></p>
+						</div>
+					</a>
+
+				</div>
+			</div>
+		
+		</div>
+
+	</div>
+
+	<!-- jQuery Library -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+
+	<!-- jQueryUI Library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+	<script type="text/javascript" src="final-script.js"></script>
+</body>
+
+</html>
